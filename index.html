@@ -227,7 +227,9 @@
   .reveal.in{opacity:1;transform:perspective(1300px) rotateX(0deg) translateY(0)}
   .tilt{transition:transform .5s cubic-bezier(.19,1,.22,1);transform-style:preserve-3d}
   [data-parallax] img,.hero-bg img[style]{will-change:transform}
-  @media(prefers-reduced-motion:reduce){.js .reveal{opacity:1!important;transform:none!important}.tilt{transition:none!important}.hero-inner{animation:none}[data-parallax] img{transform:none!important}}
+  /* scroll "paint-in" text — words are present, fill in as you scroll */
+  .js .paint .w{opacity:.13;transition:opacity .18s linear}
+  @media(prefers-reduced-motion:reduce){.js .reveal{opacity:1!important;transform:none!important}.tilt{transition:none!important}.hero-inner{animation:none}[data-parallax] img{transform:none!important}.js .paint .w{opacity:1!important}}
 
   /* ---------- chatbot ---------- */
   .chat-fab{position:fixed;right:22px;bottom:22px;z-index:120;width:62px;height:62px;border-radius:50%;background:var(--accent);color:#fff;border:0;cursor:pointer;display:grid;place-items:center;box-shadow:0 12px 30px rgba(216,57,68,.45);transition:transform .2s}
@@ -391,9 +393,9 @@
 <!-- ============ NARRATIVE ============ -->
 <section class="band tight" style="background:var(--surface-2)">
   <div class="wrap">
-    <div class="narrative reveal">
-      <p class="big">Das Hotel Cult ist kein Haus von der Stange. Hinter der Fassade in Sachsenhausen wartet ein <em>Design-Hotel mit cineastischer Seele</em> — Wände voller Filmkunst, warmes Licht, eine eigene Cult Bar und Zimmer, die man so nirgends sonst findet.</p>
-      <p class="big">Zentral am Main, gegenüber der Altstadt und dem Museumsufer — die Ruhe eines Boutique-Hotels mit den kurzen Wegen einer Weltstadt.</p>
+    <div class="narrative">
+      <p class="big paint">Das Hotel Cult ist kein Haus von der Stange. Hinter der Fassade in Sachsenhausen wartet ein <em>Design-Hotel mit cineastischer Seele</em> — Wände voller Filmkunst, warmes Licht, eine eigene Cult Bar und Zimmer, die man so nirgends sonst findet.</p>
+      <p class="big paint">Zentral am Main, gegenüber der Altstadt und dem Museumsufer — die Ruhe eines Boutique-Hotels mit den kurzen Wegen einer Weltstadt.</p>
     </div>
   </div>
 </section>
@@ -656,8 +658,29 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
     setTimeout(revealAll,3000);
   }
 
-  /* parallax depth + 3D hover tilt */
-  if(!reduce){
+  /* split "paint-in" text into word spans (present, then fills in on scroll) */
+  var paints=[].slice.call(document.querySelectorAll('.paint')).map(function(el){
+    var words=[], nodes=[], tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null,false), n;
+    while(n=tw.nextNode()){ if(n.nodeValue.trim().length) nodes.push(n); }
+    nodes.forEach(function(tn){
+      var parts=tn.nodeValue.split(/(\s+)/), frag=document.createDocumentFragment();
+      parts.forEach(function(p){ if(!p)return; if(/^\s+$/.test(p)){ frag.appendChild(document.createTextNode(p)); } else { var s=document.createElement('span'); s.className='w'; s.textContent=p; frag.appendChild(s); words.push(s); } });
+      tn.parentNode.replaceChild(frag,tn);
+    });
+    return {el:el, words:words};
+  });
+  function paintFrame(){ var h=vh();
+    for(var k=0;k<paints.length;k++){ var o=paints[k], N=o.words.length; if(!N)continue;
+      var r=o.el.getBoundingClientRect(); var start=h*0.86, end=h*0.34;
+      var p=(start-r.top)/(start-end); p=p<0?0:(p>1?1:p);
+      var spread=Math.max(5,N*0.22);
+      for(var i=0;i<N;i++){ var t=(p*(N+spread)-i)/spread; t=t<0?0:(t>1?1:t); o.words[i].style.opacity=(0.13+0.87*t).toFixed(3); }
+    }
+  }
+
+  /* parallax depth + paint-in + 3D hover tilt */
+  if(reduce){ paints.forEach(function(o){ o.words.forEach(function(w){ w.style.opacity=1; }); }); }
+  else{
     var hb=document.querySelector('.hero-bg img'); if(hb){ hb.setAttribute('data-parallax','28'); hb.setAttribute('data-pscale','1.12'); }
     [].forEach.call(document.querySelectorAll('.split-media'),function(m){ m.setAttribute('data-parallax','16'); m.setAttribute('data-pscale','1.14'); });
     var vv=document.querySelector('.videoband .vbg'); if(vv){ vv.setAttribute('data-parallax','22'); vv.setAttribute('data-pscale','1.1'); }
@@ -670,8 +693,8 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
         img.style.transform='scale('+sc+') translate3d(0,'+(-off*sp).toFixed(1)+'px,0)';
       }
     }
-    var pt=false; function paraReq(){ if(!pt){ pt=true; requestAnimationFrame(function(){ paraFrame(); pt=false; }); } }
-    window.addEventListener('scroll',paraReq,{passive:true}); window.addEventListener('resize',paraReq); paraFrame();
+    var pt=false; function fxReq(){ if(!pt){ pt=true; requestAnimationFrame(function(){ paraFrame(); paintFrame(); pt=false; }); } }
+    window.addEventListener('scroll',fxReq,{passive:true}); window.addEventListener('resize',fxReq); paraFrame(); paintFrame();
 
     if(window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
       [].forEach.call(document.querySelectorAll('.room'),function(card){ card.classList.add('tilt');
