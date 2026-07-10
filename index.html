@@ -222,10 +222,12 @@
   .foot-bot p,.foot-bot a{font-size:12px;color:rgba(255,255,255,.5)}
   .foot-bot a:hover{color:#fff}
 
-  /* reveal */
-  .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-  .reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){.js .reveal{opacity:1!important;transform:none!important}.hero-inner{animation:none}}
+  /* scroll-driven 3D reveal — elements unfold up & tilt flat ("build up") */
+  .js .reveal{opacity:0;transform:perspective(1300px) rotateX(-15deg) translateY(48px);transform-origin:50% 0%;transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.19,1,.22,1);backface-visibility:hidden;will-change:transform,opacity}
+  .reveal.in{opacity:1;transform:perspective(1300px) rotateX(0deg) translateY(0)}
+  .tilt{transition:transform .5s cubic-bezier(.19,1,.22,1);transform-style:preserve-3d}
+  [data-parallax] img,.hero-bg img[style]{will-change:transform}
+  @media(prefers-reduced-motion:reduce){.js .reveal{opacity:1!important;transform:none!important}.tilt{transition:none!important}.hero-inner{animation:none}[data-parallax] img{transform:none!important}}
 
   /* ---------- chatbot ---------- */
   .chat-fab{position:fixed;right:22px;bottom:22px;z-index:120;width:62px;height:62px;border-radius:50%;background:var(--accent);color:#fff;border:0;cursor:pointer;display:grid;place-items:center;box-shadow:0 12px 30px rgba(216,57,68,.45);transition:transform .2s}
@@ -636,14 +638,47 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
   function onScroll(){ bar.classList.toggle('scrolled',(window.scrollY||document.documentElement.scrollTop)>40); }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
-  /* reveal */
+  function vh(){ return window.innerHeight||document.documentElement.clientHeight||700; }
+
+  /* per-item reveal for grids + staggered cascade */
+  [].forEach.call(document.querySelectorAll('.rooms,.amen,.rep'),function(g){ g.classList.remove('reveal'); });
+  ['.rep-cell','.room','.amen-cell'].forEach(function(sel){
+    [].forEach.call(document.querySelectorAll(sel),function(c,idx){ c.classList.add('reveal'); c.style.transitionDelay=((idx%4)*0.07)+'s'; });
+  });
+
+  /* 3D unfold reveal (one-shot on enter) */
   var reveals=[].slice.call(document.querySelectorAll('.reveal'));
   function revealAll(){ reveals.forEach(function(el){el.classList.add('in');}); }
   if(reduce || !('IntersectionObserver' in window)){ revealAll(); }
   else{
-    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{rootMargin:'0px 0px -8% 0px',threshold:0.02});
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{rootMargin:'0px 0px -6% 0px',threshold:0.03});
     reveals.forEach(function(el){ io.observe(el); });
-    setTimeout(revealAll,2600);
+    setTimeout(revealAll,3000);
+  }
+
+  /* parallax depth + 3D hover tilt */
+  if(!reduce){
+    var hb=document.querySelector('.hero-bg img'); if(hb){ hb.setAttribute('data-parallax','28'); hb.setAttribute('data-pscale','1.12'); }
+    [].forEach.call(document.querySelectorAll('.split-media'),function(m){ m.setAttribute('data-parallax','16'); m.setAttribute('data-pscale','1.14'); });
+    var vv=document.querySelector('.videoband .vbg'); if(vv){ vv.setAttribute('data-parallax','22'); vv.setAttribute('data-pscale','1.1'); }
+    var px=[].slice.call(document.querySelectorAll('[data-parallax]'));
+    function paraFrame(){ var h=vh(), vc=h/2;
+      for(var i=0;i<px.length;i++){ var el=px[i]; var img=el.tagName==='IMG'?el:el.querySelector('img'); if(!img)continue;
+        var r=el.getBoundingClientRect(); if(r.bottom<-40||r.top>h+40)continue;
+        var off=((r.top+r.height/2)-vc)/h; var sp=+el.getAttribute('data-parallax')||18;
+        var sc=el.getAttribute('data-pscale')||'1.12';
+        img.style.transform='scale('+sc+') translate3d(0,'+(-off*sp).toFixed(1)+'px,0)';
+      }
+    }
+    var pt=false; function paraReq(){ if(!pt){ pt=true; requestAnimationFrame(function(){ paraFrame(); pt=false; }); } }
+    window.addEventListener('scroll',paraReq,{passive:true}); window.addEventListener('resize',paraReq); paraFrame();
+
+    if(window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+      [].forEach.call(document.querySelectorAll('.room'),function(card){ card.classList.add('tilt');
+        card.addEventListener('mousemove',function(ev){ var r=card.getBoundingClientRect(); var x=(ev.clientX-r.left)/r.width-0.5, y=(ev.clientY-r.top)/r.height-0.5; card.style.transform='perspective(760px) rotateX('+(-y*6).toFixed(2)+'deg) rotateY('+(x*7).toFixed(2)+'deg) translateY(-6px)'; });
+        card.addEventListener('mouseleave',function(){ card.style.transform=''; });
+      });
+    }
   }
 
   /* default dates: today + tomorrow */
