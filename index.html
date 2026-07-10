@@ -166,7 +166,7 @@
   .dist-row{display:flex;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px solid var(--hair)}
   .dist-row .d{font-family:var(--mono);font-size:15px;font-weight:500;color:var(--accent-txt);min-width:74px;font-variant-numeric:tabular-nums}
   .dist-row .t{font-size:14.5px;color:var(--frost)}
-  .loc-txt .btn{margin-top:26px}
+  .loc-txt .btn-row{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
 
   /* ---------- booking CTA ---------- */
   .book{text-align:center;padding:clamp(80px,12vw,140px) 20px;position:relative;overflow:hidden;border-top:1px solid var(--hair)}
@@ -196,6 +196,37 @@
   .js .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.js .reveal{opacity:1!important;transform:none!important;transition:none}.hero-inner{animation:none}}
+
+  /* ---------- hotel video band ---------- */
+  .videoband{position:relative;height:clamp(420px,70vh,640px);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;cursor:pointer}
+  .videoband .vbg{position:absolute;inset:0;z-index:0}
+  .videoband .vbg img{width:100%;height:100%;object-fit:cover}
+  .videoband .vbg::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 100% at 50% 45%,rgba(0,0,0,.34),rgba(0,0,0,.74))}
+  .videoband .v-inner{position:relative;z-index:1;max-width:640px;padding:0 20px}
+  .videoband .eyebrow{display:block;margin-bottom:18px}
+  .videoband h3{font-size:clamp(26px,4vw,40px);font-weight:700;letter-spacing:-.02em;color:var(--white);line-height:1.1}
+  .videoband p{margin-top:14px;color:var(--frost);font-size:16px}
+  .videoband .play{margin:28px auto 0;width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.42);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:grid;place-items:center;transition:transform .2s ease,background .2s ease}
+  .videoband:hover .play,.videoband:focus-visible .play{transform:scale(1.08);background:var(--accent)}
+  .videoband .play svg{width:26px;height:26px;margin-left:4px;color:#fff}
+  .videoband iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:2}
+  .videoband.playing .vbg,.videoband.playing .v-inner{display:none}
+
+  /* ---------- booking modal ---------- */
+  .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:clamp(10px,3vw,32px)}
+  .modal.open{display:flex}
+  .modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.8);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .modal-card{position:relative;width:min(980px,100%);height:min(88vh,900px);background:var(--obsidian);border:1px solid var(--hair-2);border-radius:16px;display:flex;flex-direction:column;overflow:hidden}
+  .modal-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 22px;border-bottom:1px solid var(--hair);flex:none}
+  .modal-head h3{font-size:19px;font-weight:600;color:var(--paper);letter-spacing:-.01em;margin-top:2px}
+  .modal-close{width:38px;height:38px;flex:none;border-radius:50%;background:var(--graphite);border:1px solid var(--hair);color:var(--frost);font-size:22px;line-height:1;cursor:pointer;transition:background .2s,color .2s}
+  .modal-close:hover{background:var(--accent);color:#fff}
+  .modal-body{position:relative;flex:1;background:#fff}
+  .modal-body iframe{width:100%;height:100%;border:0;display:block}
+  .modal-loader{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:13px;color:var(--ash);background:var(--obsidian);z-index:1}
+  .modal-foot{flex:none;padding:12px 22px;border-top:1px solid var(--hair);font-family:var(--mono);font-size:11px;letter-spacing:.02em;color:var(--ash);text-align:center;line-height:1.7}
+  .modal-foot a{color:var(--accent-txt)}
+  body.modal-open{overflow:hidden}
 </style>
 </head>
 <body>
@@ -211,7 +242,7 @@
       <a href="#lage">Lage</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-    <a class="btn btn-primary btn-sm" href="https://www.hotelcult.de/reservierung/" target="_blank" rel="noopener">Direkt buchen</a>
+    <a class="btn btn-primary btn-sm js-book" href="https://www.hotelcult.de/reservierung/" target="_blank" rel="noopener">Direkt buchen</a>
   </div>
 </header>
 
@@ -224,7 +255,7 @@
     <h1>Ein Stück Kult,<br>mitten in Frankfurt.</h1>
     <p>Design-Hotel am Rande der Altstadt — 125 individuelle Zimmer, wenige Schritte vom Mainufer und Museumsufer. Frühstück inklusive.</p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="https://www.hotelcult.de/reservierung/" target="_blank" rel="noopener">Direkt buchen — Bestpreis</a>
+      <a class="btn btn-primary js-book" href="https://www.hotelcult.de/reservierung/" target="_blank" rel="noopener">Direkt buchen — Bestpreis</a>
       <a class="btn btn-ghost" href="#zimmer">Zimmer &amp; Preise</a>
     </div>
     <div class="hero-note">8,1 / 10 bei 8.094 Booking-Bewertungen · Frühstück &amp; WLAN inklusive</div>
@@ -252,8 +283,22 @@
       <div class="rep-cell"><div class="n">125</div><div class="l">individuelle<br>Zimmer</div></div>
     </div>
     <p class="rep-src">Öffentliche Gästebewertungen, Stand Juli 2026 · Booking.com · HRS/hotel.de</p>
+    <div style="text-align:center;margin-top:20px" class="reveal">
+      <a class="btn btn-ghost btn-sm" href="https://www.customer-alliance.com/hotel-reviews-Hotel_Cult_City_Frankfurt-K3BJ21141Hid.html?lang=de" target="_blank" rel="noopener">Alle Bewertungen ansehen</a>
+    </div>
   </div>
 </section>
+
+<!-- ============ HOTEL VIDEO ============ -->
+<div class="videoband" id="film" role="button" tabindex="0" aria-label="Offiziellen Hotelfilm abspielen">
+  <div class="vbg"><img src="img/video-poster.jpg" alt="Hotel Cult Frankfurt — offizieller Hotelfilm"></div>
+  <div class="v-inner">
+    <span class="eyebrow">Der offizielle Hotelfilm</span>
+    <h3>Drei Minuten Hotel Cult</h3>
+    <p>Terrasse, Bar, Zimmer, Frühstück — sehen Sie das Haus in Bewegung.</p>
+    <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+  </div>
+</div>
 
 <!-- ============ CINEMATIC BAND — CULT BAR ============ -->
 <div class="cine">
@@ -418,7 +463,10 @@
           <div class="dist-row"><span class="d">11 km</span><span class="t">zum Flughafen Frankfurt (FRA)</span></div>
           <div class="dist-row"><span class="d">direkt</span><span class="t">gegenüber Altstadt, Städel &amp; Museumsufer</span></div>
         </div>
-        <a class="btn btn-ghost btn-sm" href="https://www.google.com/maps/search/?api=1&query=Hotel+Cult+Offenbacher+Landstra%C3%9Fe+56+Frankfurt" target="_blank" rel="noopener">In Google Maps öffnen</a>
+        <div class="btn-row">
+          <a class="btn btn-ghost btn-sm" href="https://www.hotelcult.de/fotos/virtueller-rundgang/" target="_blank" rel="noopener">360°-Rundgang</a>
+          <a class="btn btn-ghost btn-sm" href="https://www.google.com/maps/search/?api=1&query=Hotel+Cult+Offenbacher+Landstra%C3%9Fe+56+Frankfurt" target="_blank" rel="noopener">In Google Maps öffnen</a>
+        </div>
       </div>
     </div>
   </div>
@@ -430,7 +478,7 @@
     <h2 class="reveal">Bereit für Frankfurt?</h2>
     <p class="reveal">Direkt beim Hotel buchen — zum Bestpreis, mit persönlicher Beratung und ganz ohne Portal-Umweg.</p>
     <div class="book-cta reveal">
-      <a class="btn btn-primary" href="https://www.hotelcult.de/reservierung/" target="_blank" rel="noopener">Jetzt direkt buchen</a>
+      <a class="btn btn-primary js-book" href="https://www.hotelcult.de/reservierung/" target="_blank" rel="noopener">Jetzt direkt buchen</a>
       <a class="btn btn-ghost" href="tel:+496996244660">☎ +49 69&nbsp;96&nbsp;24&nbsp;46-0</a>
     </div>
     <div class="fineprint reveal">Frühstück &amp; WLAN inklusive · Parken ca. 10 €/Tag · Frankfurter Beherbergungssteuer 2 €/Person/Tag</div>
@@ -490,6 +538,58 @@
     reveals.forEach(function(el){ io.observe(el); });
     // safety net: if nothing is scrollable / observer never fires, show everything
     setTimeout(revealAll, 2600);
+  }
+})();
+</script>
+
+<!-- ============ BOOKING MODAL (live IBE) ============ -->
+<div class="modal" id="bookModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-label="Verfügbarkeit und Buchung">
+    <div class="modal-head">
+      <div><span class="eyebrow">Direktbuchung · Bestpreis</span><h3>Verfügbarkeit &amp; Buchung</h3></div>
+      <button class="modal-close" data-close aria-label="Schließen">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-loader" id="bookLoader">Buchungssystem wird geladen …</div>
+      <iframe id="bookFrame" title="Hotel Cult — Verfügbarkeit und Buchung" src="about:blank" data-src="https://www.hotelassistenz.de/hotelcult/" allow="payment"></iframe>
+    </div>
+    <div class="modal-foot">Falls die Anzeige nicht lädt: <a href="https://www.hotelcult.de/reservierung/" target="_blank" rel="noopener">Buchung in neuem Fenster öffnen</a> · oder telefonisch ☎ <a href="tel:+496996244660">069 96 24 46-0</a></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ---- live booking modal ---- */
+  var modal=document.getElementById('bookModal');
+  if(modal){
+    var frame=document.getElementById('bookFrame'), loader=document.getElementById('bookLoader'), loaded=false;
+    function openBook(e){ if(e){e.preventDefault();}
+      if(!loaded){ loaded=true; frame.src=frame.getAttribute('data-src');
+        frame.addEventListener('load',function(){ if(loader){loader.style.display='none';} });
+        setTimeout(function(){ if(loader){loader.style.display='none';} }, 8000);
+      }
+      modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('modal-open');
+    }
+    function closeBook(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('modal-open'); }
+    [].forEach.call(document.querySelectorAll('.js-book'), function(b){ b.addEventListener('click', openBook); });
+    [].forEach.call(modal.querySelectorAll('[data-close]'), function(x){ x.addEventListener('click', closeBook); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && modal.classList.contains('open')){ closeBook(); } });
+  }
+
+  /* ---- hotel film: click / keyboard to play (loads YouTube only on demand) ---- */
+  var vb=document.getElementById('film');
+  if(vb){
+    function play(){ if(vb.dataset.played){return;} vb.dataset.played='1'; vb.classList.add('playing');
+      var f=document.createElement('iframe');
+      f.src='https://www.youtube-nocookie.com/embed/IGcF2Kqgyps?autoplay=1&rel=0&modestbranding=1';
+      f.title='Hotel Cult Frankfurt — offizieller Hotelfilm';
+      f.setAttribute('allow','accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture');
+      f.setAttribute('allowfullscreen','');
+      vb.appendChild(f);
+    }
+    vb.addEventListener('click', play);
+    vb.addEventListener('keydown', function(e){ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); play(); } });
   }
 })();
 </script>
