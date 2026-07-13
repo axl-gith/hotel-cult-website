@@ -4,15 +4,35 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>document.documentElement.classList.add('js');</script>
-<title>Hotel Cult Frankfurt City · Design-Hotel in Sachsenhausen</title>
-<meta name="description" content="Hotel Cult Frankfurt City — Design-Hotel in Sachsenhausen, wenige Schritte vom Mainufer und Museumsufer. 125 Zimmer, Frühstück inklusive, Cult Bar, Sauna & Tagungen. Direkt buchen zum Bestpreis.">
-<meta property="og:title" content="Hotel Cult Frankfurt City · Design-Hotel am Main">
-<meta property="og:description" content="125 individuelle Zimmer in Frankfurt-Sachsenhausen. Frühstück inklusive, Bestpreis bei Direktbuchung.">
-<meta property="og:image" content="img/hero-terrasse.jpg">
-<meta property="og:type" content="website">
+<title>Hotel Cult Frankfurt City – Design-Hotel in Sachsenhausen | Direkt buchen</title>
+<meta name="description" content="Design-Hotel Hotel Cult in Frankfurt-Sachsenhausen: 125 Zimmer, Frühstück inklusive, Cult Bar & Sauna – wenige Minuten zu Messe, Hauptbahnhof und Museumsufer. Jetzt direkt zum Bestpreis buchen.">
+<meta name="keywords" content="Hotel Cult Frankfurt, Design-Hotel Frankfurt, Hotel Sachsenhausen, Hotel Frankfurt Messe, günstig übernachten Frankfurt, Hotel am Museumsufer, Hotel nahe Hauptbahnhof Frankfurt, Boutique-Hotel Frankfurt, Hotel Frankfurt mit Frühstück">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://axl-gith.github.io/hotel-cult-website/">
+<meta name="theme-color" content="#d83944">
+<meta name="author" content="Hotel Cult Frankfurt City">
+<meta name="geo.region" content="DE-HE">
+<meta name="geo.placename" content="Frankfurt am Main">
+<meta name="geo.position" content="50.102179;8.697642">
+<meta name="ICBM" content="50.102179, 8.697642">
+<meta property="og:type" content="hotel">
+<meta property="og:site_name" content="Hotel Cult Frankfurt City">
+<meta property="og:locale" content="de_DE">
+<meta property="og:url" content="https://axl-gith.github.io/hotel-cult-website/">
+<meta property="og:title" content="Hotel Cult Frankfurt City – Design-Hotel in Sachsenhausen">
+<meta property="og:description" content="125 individuelle Zimmer am Main, Frühstück inklusive, Bestpreis bei Direktbuchung. Minuten zu Messe, Hauptbahnhof und Museumsufer.">
+<meta property="og:image" content="https://axl-gith.github.io/hotel-cult-website/img/hero-terrasse.jpg">
+<meta property="og:image:width" content="1075">
+<meta property="og:image:height" content="1000">
+<meta property="og:image:alt" content="Hotel Cult Frankfurt – Sonnenterrasse">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hotel Cult Frankfurt City – Design-Hotel in Sachsenhausen">
+<meta name="twitter:description" content="125 Zimmer am Main, Frühstück inklusive, Bestpreis direkt. Minuten zu Messe & Museumsufer.">
+<meta name="twitter:image" content="https://axl-gith.github.io/hotel-cult-website/img/hero-terrasse.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23d83944'/%3E%3Cpath d='M21 20.6a6 6 0 1 1 0-9.2' fill='none' stroke='%23fff' stroke-width='2.8' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="img/hero-terrasse.jpg" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -275,9 +295,145 @@
   @keyframes chIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   .ch-room .rtag{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--accent);padding:2px 8px;border-radius:100px;margin-left:5px;vertical-align:1px}
   .ch-room .rtot{font-size:11.5px;font-weight:700;color:var(--accent-deep);margin-top:3px}
+  /* ===== marketing + SEO sections ===== */
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-deep));z-index:80;transition:width .1s linear}
+  .bene-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:820px){.bene-grid{grid-template-columns:1fr}}
+  .bene{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:30px 26px;box-shadow:var(--shadow-sm);transition:transform .3s ease,box-shadow .3s ease}
+  .bene .ico{width:46px;height:46px;border-radius:13px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin-bottom:16px}
+  .bene .ico svg{width:22px;height:22px}
+  .bene h3{font-size:18px;font-weight:700;color:var(--ink)}
+  .bene p{margin-top:8px;font-size:14.5px;color:var(--muted);line-height:1.6}
+  .rev-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,56px);align-items:center}
+  @media(max-width:860px){.rev-grid{grid-template-columns:1fr}}
+  .rev-scores{display:flex;flex-direction:column;gap:13px}
+  .rev-row{display:grid;grid-template-columns:148px 1fr 40px;align-items:center;gap:14px}
+  @media(max-width:520px){.rev-row{grid-template-columns:104px 1fr 34px}}
+  .rev-row .nm{font-size:14px;font-weight:600;color:var(--ink)}
+  .rev-row .track{height:9px;background:var(--surface-3);border-radius:99px;overflow:hidden}
+  .rev-row .fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#e0616b,var(--accent))}
+  .rev-row .vv{font-size:14px;font-weight:700;text-align:right;color:var(--ink);font-variant-numeric:tabular-nums}
+  .rev-praise{display:flex;flex-wrap:wrap;gap:9px;margin-top:8px}
+  .rev-praise .chip{font-size:13px;font-weight:600;color:var(--accent-deep);background:var(--accent-soft);border-radius:100px;padding:8px 15px}
+  .rev-big{text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:34px 26px;box-shadow:var(--shadow-sm)}
+  .rev-big .huge{font-family:var(--serif);font-size:62px;font-weight:800;color:var(--ink);line-height:1}
+  .rev-big .huge small{font-size:.38em;color:var(--faint);font-weight:600}
+  .rev-big .stars{color:var(--accent);font-size:19px;letter-spacing:3px;margin-top:12px}
+  .rev-big .cnt{font-size:14.5px;color:var(--ink);font-weight:600;margin-top:10px}
+  .rev-big .src{font-size:12px;color:var(--faint);margin-top:5px;line-height:1.5}
+  .rev-big .btn{margin-top:20px}
+  .messe{background:linear-gradient(160deg,#2a221c,#1b1714);color:#fff;border-radius:var(--r);padding:clamp(28px,5vw,52px);position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .messe::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 130% at 88% 8%,rgba(216,57,68,.32),transparent 60%)}
+  .messe>*{position:relative;z-index:1}
+  .messe .eyebrow{color:#f0a6ab;display:block;margin-bottom:12px}
+  .messe h2{font-family:var(--serif);font-size:clamp(24px,3.4vw,36px);font-weight:700;line-height:1.14;max-width:560px;color:#fff}
+  .messe p{margin-top:14px;color:rgba(255,255,255,.8);font-size:15.5px;max-width:600px;line-height:1.6}
+  .messe-list{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+  .messe-item{display:flex;flex-direction:column;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:13px 18px}
+  .messe-item b{font-size:15px}
+  .messe-item span{font-size:12.5px;color:rgba(255,255,255,.6);margin-top:2px}
+  .messe .btn{margin-top:28px}
+  .faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+  .faq-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);box-shadow:var(--shadow-sm);overflow:hidden;transition:box-shadow .3s}
+  .faq-item.open{box-shadow:var(--shadow)}
+  .faq-q{width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:19px 22px;font-family:var(--sans);font-size:16px;font-weight:600;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .faq-q .ic{flex:none;width:20px;height:20px;position:relative}
+  .faq-q .ic::before,.faq-q .ic::after{content:"";position:absolute;background:var(--accent);border-radius:2px}
+  .faq-q .ic::before{top:9px;left:1px;right:1px;height:2px}
+  .faq-q .ic::after{left:9px;top:1px;bottom:1px;width:2px;transition:transform .3s}
+  .faq-item.open .faq-q .ic::after{transform:scaleY(0)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .faq-a p{padding:2px 22px 20px;font-size:14.5px;color:var(--muted);line-height:1.65}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Hotel",
+      "@id": "https://axl-gith.github.io/hotel-cult-website/#hotel",
+      "name": "Hotel Cult Frankfurt City",
+      "description": "Design-Hotel in Frankfurt-Sachsenhausen mit 125 individuellen Zimmern, Frühstück inklusive, Cult Bar, Sauna und drei Tagungsräumen – wenige Minuten zu Messe, Hauptbahnhof und Museumsufer.",
+      "url": "https://axl-gith.github.io/hotel-cult-website/",
+      "logo": "https://axl-gith.github.io/hotel-cult-website/img/hotel-cult-logo.png",
+      "image": [
+        "https://axl-gith.github.io/hotel-cult-website/img/hero-terrasse.jpg",
+        "https://axl-gith.github.io/hotel-cult-website/img/bar.jpg",
+        "https://axl-gith.github.io/hotel-cult-website/img/Hotel-Cult-Doppelzimmer-Comfort.jpg"
+      ],
+      "telephone": "+49-69-96244660",
+      "email": "info@hotelcult.de",
+      "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "numberOfRooms": 125,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Offenbacher Landstraße 56",
+        "addressLocality": "Frankfurt am Main",
+        "addressRegion": "Hessen",
+        "postalCode": "60599",
+        "addressCountry": "DE"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 50.102179, "longitude": 8.697642 },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Hotel+Cult+Offenbacher+Landstra%C3%9Fe+56+Frankfurt",
+      "amenityFeature": [
+        {"@type":"LocationFeatureSpecification","name":"Kostenloses WLAN","value":true},
+        {"@type":"LocationFeatureSpecification","name":"Frühstück inklusive","value":true},
+        {"@type":"LocationFeatureSpecification","name":"Sauna & Wellness","value":true},
+        {"@type":"LocationFeatureSpecification","name":"Klimaanlage","value":true},
+        {"@type":"LocationFeatureSpecification","name":"24-Stunden-Rezeption","value":true},
+        {"@type":"LocationFeatureSpecification","name":"Bar","value":true},
+        {"@type":"LocationFeatureSpecification","name":"SKY-TV","value":true},
+        {"@type":"LocationFeatureSpecification","name":"Parkplatz","value":true},
+        {"@type":"LocationFeatureSpecification","name":"Tagungsräume","value":true},
+        {"@type":"LocationFeatureSpecification","name":"Nichtraucherzimmer","value":true}
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "8.1",
+        "bestRating": "10",
+        "worstRating": "1",
+        "ratingCount": "8094"
+      },
+      "makesOffer": [
+        {"@type":"Offer","name":"Komfortzimmer","priceCurrency":"EUR","price":"65","url":"https://www.hotelcult.de/reservierung/"},
+        {"@type":"Offer","name":"Standardzimmer","priceCurrency":"EUR","price":"45","url":"https://www.hotelcult.de/reservierung/"},
+        {"@type":"Offer","name":"Dreibettzimmer","priceCurrency":"EUR","price":"59","url":"https://www.hotelcult.de/reservierung/"},
+        {"@type":"Offer","name":"Low-Budget-Zimmer","priceCurrency":"EUR","price":"30","url":"https://www.hotelcult.de/reservierung/"}
+      ],
+      "sameAs": [
+        "https://www.hotelcult.de/",
+        "https://www.facebook.com/Hotelcult/",
+        "https://twitter.com/hotelcult",
+        "https://www.tripadvisor.com/Hotel_Review-g187337-d585243-Reviews-Hotel_Cult-Frankfurt_Hesse.html"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://axl-gith.github.io/hotel-cult-website/#website",
+      "url": "https://axl-gith.github.io/hotel-cult-website/",
+      "name": "Hotel Cult Frankfurt City",
+      "inLanguage": "de-DE",
+      "publisher": { "@id": "https://axl-gith.github.io/hotel-cult-website/#hotel" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Ist das Frühstück inklusive?","acceptedAnswer":{"@type":"Answer","text":"Ja. Das reichhaltige Frühstücksbuffet ist im Zimmerpreis bereits enthalten – ohne Aufpreis."}},
+        {"@type":"Question","name":"Gibt es Parkplätze am Hotel?","acceptedAnswer":{"@type":"Answer","text":"Ja, Parkplätze sind am Haus vorhanden (ca. 10 € pro Fahrzeug und Tag). Hinzu kommt die Frankfurter Beherbergungssteuer von 2 € pro Person und Tag."}},
+        {"@type":"Question","name":"Wie komme ich zum Hotel Cult?","acceptedAnswer":{"@type":"Answer","text":"Das Hotel liegt in der Offenbacher Landstraße 56 in Frankfurt-Sachsenhausen: 4,2 km zum Hauptbahnhof, 11 km zum Flughafen, Museumsufer und Altstadt sind fußläufig erreichbar, die ÖPNV-Anbindung ist sehr gut."}},
+        {"@type":"Question","name":"Ist die Rezeption durchgehend besetzt?","acceptedAnswer":{"@type":"Answer","text":"Ja, unsere Rezeption ist rund um die Uhr besetzt (24/7). Bei später Anreise genügt ein kurzer Anruf."}},
+        {"@type":"Question","name":"Gibt es kostenloses WLAN?","acceptedAnswer":{"@type":"Answer","text":"Ja, kostenloses WLAN steht im ganzen Haus zur Verfügung, dazu SKY-TV auf dem Zimmer."}},
+        {"@type":"Question","name":"Warum direkt beim Hotel buchen?","acceptedAnswer":{"@type":"Answer","text":"Bei der Direktbuchung erhalten Sie den Bestpreis ohne Portalgebühren und eine persönliche Beratung für Sonderwünsche."}},
+        {"@type":"Question","name":"Gibt es Tagungsräume?","acceptedAnswer":{"@type":"Answer","text":"Ja, drei Tagungsräume mit Tageslicht für bis zu 50 Personen. Die Tagungspauschale beginnt ab 45 € pro Person."}}
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <!-- ============ HEADER ============ -->
 <header class="topbar" id="topbar">
@@ -294,14 +450,15 @@
   </div>
 </header>
 
+<main id="main">
 <!-- ============ HERO ============ -->
 <div id="top"></div>
 <section class="hero">
   <div class="hero-bg"><img src="img/hero-terrasse.jpg" alt="Sonnenterrasse des Hotel Cult Frankfurt"></div>
   <div class="hero-inner">
-    <span class="eyebrow">Frankfurt am Main · Sachsenhausen</span>
-    <h1>Willkommen im Hotel Cult</h1>
-    <p>Design-Hotel am Rande der Altstadt — 125 individuelle Zimmer, wenige Schritte vom Mainufer und Museumsufer. Frühstück inklusive.</p>
+    <span class="eyebrow">Design-Hotel · Frankfurt-Sachsenhausen</span>
+    <h1>Willkommen im Hotel Cult Frankfurt</h1>
+    <p>Ihr Design-Hotel in Sachsenhausen — 125 individuelle Zimmer, Frühstück inklusive, wenige Minuten zu Messe, Hauptbahnhof, Museumsufer und Altstadt. Direkt buchen zum Bestpreis.</p>
 
     <form class="searchbar" id="searchbar" autocomplete="off">
       <div class="fld">
@@ -325,9 +482,9 @@
     </form>
 
     <div class="hero-note">
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Frühstück inklusive</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Bestpreis bei Direktbuchung</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>8,1/10 · 8.094 Bewertungen</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Frühstück &amp; WLAN inklusive</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Bestpreis bei Direktbuchung</span>
     </div>
   </div>
   <div class="scroll-ind"><span>Scroll</span><div class="line"></div></div>
@@ -349,7 +506,7 @@
 
     <div class="rooms reveal" id="roomGrid">
       <div class="room" data-slug="komfort" data-price="65" data-sug="1">
-        <div class="room-img"><span class="room-badge">Empfohlen</span><img src="img/Hotel-Cult-Doppelzimmer-Comfort.jpg" alt="Komfortzimmer"></div>
+        <div class="room-img"><span class="room-badge">Empfohlen</span><img src="img/Hotel-Cult-Doppelzimmer-Comfort.jpg" alt="Komfortzimmer im Hotel Cult Frankfurt" loading="lazy" decoding="async" width="400" height="400"></div>
         <div class="room-body">
           <h3>Komfortzimmer</h3>
           <div class="desc">Unser großzügigstes Zimmer — mehr Fläche und Ausstattung für den entspannten Aufenthalt.</div>
@@ -361,7 +518,7 @@
         </div>
       </div>
       <div class="room" data-slug="standard" data-price="45" data-sug="2">
-        <div class="room-img"><span class="room-badge gold">Beliebteste Wahl</span><img src="img/Hotel-Cult-Doppelzimmer-Standard.jpg" alt="Standardzimmer"></div>
+        <div class="room-img"><span class="room-badge gold">Beliebteste Wahl</span><img src="img/Hotel-Cult-Doppelzimmer-Standard.jpg" alt="Standardzimmer im Hotel Cult Frankfurt" loading="lazy" decoding="async" width="400" height="400"></div>
         <div class="room-body">
           <h3>Standardzimmer</h3>
           <div class="desc">Das klassische Doppelzimmer im Cult-Design — bequem, ruhig und stilvoll.</div>
@@ -373,7 +530,7 @@
         </div>
       </div>
       <div class="room" data-slug="dreibett" data-price="59" data-sug="3">
-        <div class="room-img"><img src="img/Hotel-Cult-Dreibettzimmer.jpg" alt="Dreibettzimmer"></div>
+        <div class="room-img"><img src="img/Hotel-Cult-Dreibettzimmer.jpg" alt="Dreibettzimmer im Hotel Cult Frankfurt" loading="lazy" decoding="async" width="400" height="400"></div>
         <div class="room-body">
           <h3>Dreibettzimmer</h3>
           <div class="desc">Extra Platz für Freunde, Familie oder Kollegen — drei Betten, viel Raum.</div>
@@ -385,7 +542,7 @@
         </div>
       </div>
       <div class="room" data-slug="low-budget" data-price="30" data-sug="4">
-        <div class="room-img"><img src="img/Hotel-Cult-Einzelzimmer.jpg" alt="Low-Budget-Zimmer"></div>
+        <div class="room-img"><img src="img/Hotel-Cult-Einzelzimmer.jpg" alt="Low-Budget-Zimmer im Hotel Cult Frankfurt" loading="lazy" decoding="async" width="400" height="400"></div>
         <div class="room-body">
           <h3>Low-Budget</h3>
           <div class="desc">Clever &amp; kompakt für preisbewusste Städtereisende — alles Nötige für die Nacht.</div>
@@ -401,6 +558,34 @@
   </div>
 </section>
 
+<!-- ============ WHY DIRECT (Marketing) ============ -->
+<section class="band tight" id="direkt" aria-label="Vorteile der Direktbuchung">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Warum direkt buchen?</span>
+      <h2 class="sec">Am besten direkt beim Hotel</h2>
+      <p>Buchen Sie ohne Umweg über Portale — das lohnt sich für Sie gleich mehrfach.</p>
+    </div>
+    <div class="bene-grid">
+      <div class="bene">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Bestpreis-Garantie</h3>
+        <p>Direkt gebucht ist am günstigsten — ohne Portalgebühren, die sonst den Preis nach oben treiben.</p>
+      </div>
+      <div class="bene">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"/></svg></div>
+        <h3>Persönlicher Service</h3>
+        <p>24/7-Rezeption und ein direkter Draht ins Haus — für Sonderwünsche, Fragen und die schnelle Antwort.</p>
+      </div>
+      <div class="bene">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Frühstück inklusive</h3>
+        <p>Bei jeder Direktbuchung ist das Frühstücksbuffet schon dabei — plus gratis WLAN &amp; SKY-TV.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ NARRATIVE ============ -->
 <section class="band tight" style="background:var(--surface-2)">
   <div class="wrap">
@@ -411,20 +596,38 @@
   </div>
 </section>
 
-<!-- ============ REPUTATION ============ -->
-<section class="band">
+<!-- ============ REVIEWS (Social Proof) ============ -->
+<section class="band" id="bewertungen" aria-label="Gästebewertungen">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Das sagen unsere Gäste</span>
-      <h2 class="sec">Über 8.000 Bewertungen</h2>
+      <h2 class="sec">Über 8.000 Bewertungen sprechen für sich</h2>
+      <p>Gäste loben besonders das Preis-Leistungs-Verhältnis, das freundliche Team und die zentrale Lage in Sachsenhausen.</p>
     </div>
-    <div class="rep reveal">
-      <div class="rep-cell"><div class="n">8,1<small>/10</small></div><div class="l">Booking.com<br>8.094 Bewertungen</div></div>
-      <div class="rep-cell"><div class="n">93<small>%</small></div><div class="l">Weiterempfehlung<br>HRS / hotel.de</div></div>
-      <div class="rep-cell"><div class="n">8,7</div><div class="l">Preis-Leistung<br>Booking-Bestwert</div></div>
-      <div class="rep-cell"><div class="n">125</div><div class="l">individuelle<br>Zimmer</div></div>
+    <div class="rev-grid">
+      <div class="rev-scores reveal">
+        <div class="rev-row"><div class="nm">Preis-Leistung</div><div class="track"><div class="fill" style="width:87%"></div></div><div class="vv">8,7</div></div>
+        <div class="rev-row"><div class="nm">Kostenloses WLAN</div><div class="track"><div class="fill" style="width:87%"></div></div><div class="vv">8,7</div></div>
+        <div class="rev-row"><div class="nm">Personal</div><div class="track"><div class="fill" style="width:86%"></div></div><div class="vv">8,6</div></div>
+        <div class="rev-row"><div class="nm">Sauberkeit</div><div class="track"><div class="fill" style="width:84%"></div></div><div class="vv">8,4</div></div>
+        <div class="rev-row"><div class="nm">Komfort</div><div class="track"><div class="fill" style="width:84%"></div></div><div class="vv">8,4</div></div>
+        <div class="rev-row"><div class="nm">Lage</div><div class="track"><div class="fill" style="width:83%"></div></div><div class="vv">8,3</div></div>
+        <div class="rev-praise">
+          <span class="chip">Freundliches Team</span>
+          <span class="chip">Reichhaltiges Frühstück</span>
+          <span class="chip">Saubere, ruhige Zimmer</span>
+          <span class="chip">Top Preis-Leistung</span>
+          <span class="chip">Zentrale Lage</span>
+        </div>
+      </div>
+      <div class="rev-big reveal">
+        <div class="huge">8,1<small>/10</small></div>
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <div class="cnt">8.094 Bewertungen · „Gut"</div>
+        <div class="src">Quelle: Booking.com · zusätzlich 93 % Weiterempfehlung (HRS / hotel.de)</div>
+        <a class="btn btn-ghost btn-sm" href="https://www.customer-alliance.com/hotel-reviews-Hotel_Cult_City_Frankfurt-K3BJ21141Hid.html?lang=de" target="_blank" rel="noopener">Alle Bewertungen ansehen</a>
+      </div>
     </div>
-    <div class="rep-cta reveal"><a class="btn btn-ghost btn-sm" href="https://www.customer-alliance.com/hotel-reviews-Hotel_Cult_City_Frankfurt-K3BJ21141Hid.html?lang=de" target="_blank" rel="noopener">Alle Bewertungen ansehen</a></div>
   </div>
 </section>
 
@@ -437,7 +640,7 @@
         <h2>Wo der Abend zum Filmset wird.</h2>
         <p>Gerahmte Filmkunst, tiefe Ledersofas und eine gut sortierte Bar — der perfekte Ort für einen Drink nach dem Messetag oder dem Museumsbummel. Das Herz des Hauses.</p>
       </div>
-      <div class="split-media reveal"><img src="img/bar.jpg" alt="Cult Bar & Lounge mit Filmplakaten"></div>
+      <div class="split-media reveal"><img src="img/bar.jpg" alt="Cult Bar und Lounge mit Filmplakaten im Hotel Cult Frankfurt" loading="lazy" decoding="async" width="1600" height="710"></div>
     </div>
   </div>
 </section>
@@ -487,7 +690,7 @@
 
 <!-- ============ HOTEL VIDEO ============ -->
 <div class="videoband" id="film" role="button" tabindex="0" aria-label="Offiziellen Hotelfilm abspielen">
-  <div class="vbg"><img src="img/video-poster.jpg" alt="Hotel Cult Frankfurt — offizieller Hotelfilm"></div>
+  <div class="vbg"><img src="img/video-poster.jpg" alt="Sonnenterrasse im Hotel Cult Frankfurt — offizieller Hotelfilm" loading="lazy" decoding="async" width="1280" height="720"></div>
   <div class="v-inner">
     <span class="eyebrow">Der offizielle Hotelfilm</span>
     <h3>Drei Minuten Hotel Cult</h3>
@@ -500,7 +703,7 @@
 <section class="band" id="tagungen">
   <div class="wrap">
     <div class="split rev">
-      <div class="split-media reveal"><img src="img/design-33.jpg" alt="Tagungsraum im Hotel Cult"></div>
+      <div class="split-media reveal"><img src="img/design-33.jpg" alt="Tagungsraum mit Tageslicht im Hotel Cult Frankfurt" loading="lazy" decoding="async" width="2048" height="1479"></div>
       <div class="split-txt reveal">
         <span class="eyebrow">Tagungen &amp; Events</span>
         <h2>Drei Räume mit Tageslicht.</h2>
@@ -523,7 +726,7 @@
 <section class="band" id="lage" style="background:var(--surface-2)">
   <div class="wrap">
     <div class="split">
-      <div class="split-media reveal"><img src="img/design-55.jpg" alt="Hotel Cult Frankfurt, Außenansicht Offenbacher Landstraße 56"></div>
+      <div class="split-media reveal"><img src="img/design-55.jpg" alt="Außenansicht Hotel Cult Frankfurt, Offenbacher Landstraße 56 in Sachsenhausen" loading="lazy" decoding="async" width="2048" height="1479"></div>
       <div class="split-txt reveal">
         <span class="eyebrow">Lage</span>
         <h2>Sachsenhausen, am Main.</h2>
@@ -543,6 +746,43 @@
   </div>
 </section>
 
+<!-- ============ MESSE URGENCY (Marketing) ============ -->
+<section class="band" id="messe" aria-label="Frankfurter Messen 2026">
+  <div class="wrap">
+    <div class="messe reveal">
+      <span class="eyebrow">Messe-Termine 2026</span>
+      <h2>Zur Messe ist Frankfurt schnell ausgebucht.</h2>
+      <p>Wer zu den großen Messen anreist, sollte früh reservieren — direkt bei uns sichern Sie sich Ihr Zimmer in Sachsenhausen zum Bestpreis, mit kurzer Anbindung zum Messegelände.</p>
+      <div class="messe-list">
+        <div class="messe-item"><b>Automechanika</b><span>8.–12. September 2026</span></div>
+        <div class="messe-item"><b>Frankfurter Buchmesse</b><span>7.–11. Oktober 2026</span></div>
+        <div class="messe-item"><b>Messe, Kongresse &amp; Events</b><span>ganzjährig</span></div>
+      </div>
+      <a class="btn btn-primary js-scrollbook" href="#top">Messe-Zeitraum sichern</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ (SEO + Marketing) ============ -->
+<section class="band" id="faq" aria-label="Häufige Fragen">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Häufige Fragen</span>
+      <h2 class="sec">Gut zu wissen</h2>
+      <p>Die häufigsten Fragen rund um Ihren Aufenthalt im Hotel Cult Frankfurt.</p>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Ist das Frühstück inklusive?<span class="ic" aria-hidden="true"></span></button><div class="faq-a"><p>Ja. Das reichhaltige Frühstücksbuffet ist im Zimmerpreis bereits enthalten – ohne Aufpreis.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Gibt es Parkplätze am Hotel?<span class="ic" aria-hidden="true"></span></button><div class="faq-a"><p>Ja, Parkplätze sind am Haus vorhanden (ca. 10 € pro Fahrzeug und Tag). Hinzu kommt die Frankfurter Beherbergungssteuer von 2 € pro Person und Tag.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Wie komme ich zum Hotel Cult?<span class="ic" aria-hidden="true"></span></button><div class="faq-a"><p>Das Hotel liegt in der Offenbacher Landstraße 56 in Frankfurt-Sachsenhausen: 4,2 km zum Hauptbahnhof, 11 km zum Flughafen, Museumsufer und Altstadt sind fußläufig erreichbar, die ÖPNV-Anbindung ist sehr gut.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Ist die Rezeption durchgehend besetzt?<span class="ic" aria-hidden="true"></span></button><div class="faq-a"><p>Ja, unsere Rezeption ist rund um die Uhr besetzt (24/7). Bei später Anreise genügt ein kurzer Anruf.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Gibt es kostenloses WLAN?<span class="ic" aria-hidden="true"></span></button><div class="faq-a"><p>Ja, kostenloses WLAN steht im ganzen Haus zur Verfügung, dazu SKY-TV auf dem Zimmer.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Warum direkt beim Hotel buchen?<span class="ic" aria-hidden="true"></span></button><div class="faq-a"><p>Bei der Direktbuchung erhalten Sie den Bestpreis ohne Portalgebühren und eine persönliche Beratung für Sonderwünsche.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Gibt es Tagungsräume?<span class="ic" aria-hidden="true"></span></button><div class="faq-a"><p>Ja, drei Tagungsräume mit Tageslicht für bis zu 50 Personen. Die Tagungspauschale beginnt ab 45 € pro Person.</p></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ BOOKING CTA ============ -->
 <section class="book">
   <div class="wrap">
@@ -556,6 +796,7 @@
     <div class="fineprint reveal">Frühstück &amp; WLAN inklusive · Parken ca. 10 €/Tag · Frankfurter Beherbergungssteuer 2 €/Person/Tag</div>
   </div>
 </section>
+</main>
 
 <!-- ============ FOOTER ============ -->
 <footer id="kontakt">
@@ -575,8 +816,10 @@
       <div class="foot-col">
         <h4>Entdecken</h4>
         <a href="#zimmer">Zimmer &amp; Verfügbarkeit</a>
+        <a href="#bewertungen">Bewertungen</a>
         <a href="#haus">Das Haus</a>
         <a href="#tagungen">Tagungen &amp; Events</a>
+        <a href="#faq">Häufige Fragen</a>
         <a href="#lage">Anfahrt</a>
         <div class="foot-social">
           <a href="https://www.facebook.com/Hotelcult/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-9h3l.5-3.5H13V7.3c0-1 .3-1.7 1.8-1.7H17V2.4C16.6 2.3 15.4 2.2 14 2.2c-2.8 0-4.7 1.7-4.7 4.8v2.5H6V13h3.3v9H13z"/></svg></a>
@@ -648,14 +891,16 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
 
   /* header shadow on scroll */
   var bar=document.getElementById('topbar');
-  function onScroll(){ bar.classList.toggle('scrolled',(window.scrollY||document.documentElement.scrollTop)>40); }
-  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  var prog=document.getElementById('progress');
+  function onScroll(){ var sc=window.scrollY||document.documentElement.scrollTop||0; bar.classList.toggle('scrolled',sc>40);
+    if(prog){ var de=document.documentElement; var max=(de.scrollHeight-de.clientHeight)||1; prog.style.width=(Math.min(sc/max,1)*100)+'%'; } }
+  window.addEventListener('scroll',onScroll,{passive:true}); window.addEventListener('resize',onScroll); onScroll();
 
   function vh(){ return window.innerHeight||document.documentElement.clientHeight||700; }
 
   /* per-item reveal for grids + staggered cascade */
-  [].forEach.call(document.querySelectorAll('.rooms,.amen,.rep'),function(g){ g.classList.remove('reveal'); });
-  ['.rep-cell','.room','.amen-cell'].forEach(function(sel){
+  [].forEach.call(document.querySelectorAll('.rooms,.amen'),function(g){ g.classList.remove('reveal'); });
+  ['.room','.amen-cell','.bene'].forEach(function(sel){
     [].forEach.call(document.querySelectorAll(sel),function(c,idx){ c.classList.add('reveal'); c.style.transitionDelay=((idx%4)*0.07)+'s'; });
   });
 
@@ -714,7 +959,7 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
     window.addEventListener('scroll',fxReq,{passive:true}); window.addEventListener('resize',fxReq); window.addEventListener('load',function(){ paraFrame(); paintFrame(); }); paraFrame(); paintFrame();
 
     if(window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
-      [{sel:'.room',rx:6,ry:7,lift:-6},{sel:'.amen-cell',rx:4,ry:5,lift:-3},{sel:'.rep-cell',rx:4,ry:5,lift:-2}].forEach(function(cfg){
+      [{sel:'.room',rx:6,ry:7,lift:-6},{sel:'.amen-cell',rx:4,ry:5,lift:-3},{sel:'.bene',rx:5,ry:6,lift:-4}].forEach(function(cfg){
         [].forEach.call(document.querySelectorAll(cfg.sel),function(card){ card.classList.add('tilt');
           card.addEventListener('mousemove',function(ev){ var r=card.getBoundingClientRect(); var x=(ev.clientX-r.left)/r.width-0.5, y=(ev.clientY-r.top)/r.height-0.5;
             card.style.setProperty('--gx',((x+0.5)*100).toFixed(1)+'%'); card.style.setProperty('--gy',((y+0.5)*100).toFixed(1)+'%');
@@ -889,6 +1134,21 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
   send.addEventListener('click',function(){ submit(inp.value); });
   inp.addEventListener('keydown',function(e){ if(e.key==='Enter'){ submit(inp.value); } });
   if(chipsBox){ chipsBox.addEventListener('click',function(e){ var b=(e.target&&e.target.closest)?e.target.closest('.ch-chip'):null; if(b){ submit(b.textContent); } }); }
+})();
+</script>
+
+<script>
+/* ============ FAQ accordion ============ */
+(function(){
+  [].forEach.call(document.querySelectorAll('.faq-item'),function(it){
+    var q=it.querySelector('.faq-q'), a=it.querySelector('.faq-a');
+    if(!q||!a){ return; }
+    q.addEventListener('click',function(){
+      var open=it.classList.toggle('open');
+      q.setAttribute('aria-expanded',open?'true':'false');
+      a.style.maxHeight=open?(a.scrollHeight+'px'):'0px';
+    });
+  });
 })();
 </script>
 </body>
