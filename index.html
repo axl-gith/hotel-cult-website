@@ -153,7 +153,7 @@
   @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 
   /* search widget */
-  .searchbar{margin:38px auto 0;max-width:880px;background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);border-radius:14px;padding:6px;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:0;align-items:stretch;text-align:left;box-shadow:0 28px 64px -26px rgba(20,14,9,.62),0 2px 6px rgba(20,14,9,.08)}
+  .searchbar{margin:38px auto 0;max-width:980px;background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);border-radius:14px;padding:6px;display:grid;grid-template-columns:1.05fr 1.05fr .95fr .8fr auto;gap:0;align-items:stretch;text-align:left;box-shadow:0 28px 64px -26px rgba(20,14,9,.62),0 2px 6px rgba(20,14,9,.08)}
   .fld{display:flex;flex-direction:column;gap:3px;padding:11px 18px;justify-content:center;position:relative;border-radius:10px;transition:background .2s}
   .fld+.fld::before{content:"";position:absolute;left:0;top:13px;bottom:13px;width:1px;background:var(--line)}
   .fld:focus-within{background:var(--sand-soft)}
@@ -163,13 +163,12 @@
   .searchbar .btn{min-height:56px;align-self:stretch;padding:0 30px;border-radius:10px}
   .searchbar.flash{animation:flashbox .9s ease}
   @keyframes flashbox{0%,100%{box-shadow:0 28px 64px -26px rgba(20,14,9,.62),0 2px 6px rgba(20,14,9,.08)}45%{box-shadow:0 0 0 3px rgba(216,57,68,.5),0 28px 64px -26px rgba(20,14,9,.62)}}
-  @media(max-width:760px){
+  @media(max-width:900px){
     .searchbar{grid-template-columns:1fr 1fr;gap:2px}
     .fld+.fld::before{display:none}
     .fld{background:var(--sand-soft)}
     .searchbar .btn{grid-column:1/-1;min-height:52px}
   }
-  @media(max-width:440px){.searchbar{grid-template-columns:1fr 1fr}.fld:nth-of-type(3){grid-column:1/-1}}
   @media(max-width:640px){
     .hero{min-height:auto;padding:104px 18px 48px}
     .hero h1{font-size:clamp(30px,8.4vw,40px)}
@@ -497,6 +496,37 @@
     .msg.typing span{animation:none!important}
   }
 
+  /* ---------- booking summary ---------- */
+  .bk{position:fixed;inset:0;z-index:140;display:none;align-items:center;justify-content:center;padding:clamp(12px,3vw,32px)}
+  .bk.open{display:flex}
+  .bk-back{position:absolute;inset:0;background:rgba(18,13,10,.66);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+  .bk-card{position:relative;width:min(880px,100%);max-height:92vh;overflow:auto;background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow-lg);display:grid;grid-template-columns:1fr 1fr;animation:bkIn .32s cubic-bezier(.19,1,.22,1) both}
+  @keyframes bkIn{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:none}}
+  .bk-media{overflow:hidden;background:var(--sand-2);min-height:260px}
+  .bk-media img{width:100%;height:100%;object-fit:cover}
+  .bk-body{padding:clamp(24px,3vw,36px)}
+  .bk-body .eyebrow{display:inline-flex;margin-bottom:12px}
+  .bk-body h3{font-family:var(--serif);font-size:var(--d3);font-weight:700;color:var(--ink);line-height:1.15}
+  .bk-list{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:20px 0 0;font-size:var(--t-m);border-top:1px solid var(--hairline);padding-top:16px}
+  .bk-list dt{color:var(--muted)}
+  .bk-list dd{margin:0;text-align:right;font-weight:600;color:var(--ink)}
+  .bk-total{margin-top:16px;padding-top:14px;border-top:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:baseline}
+  .bk-total span{font-size:var(--t-m);color:var(--muted)}
+  .bk-total b{font-family:var(--serif);font-size:26px;color:var(--ink);letter-spacing:-.02em}
+  .bk-note{margin-top:5px;font-size:var(--t-s);color:var(--faint);text-align:right}
+  .bk-go{margin-top:20px;width:100%}
+  .bk-fine{margin-top:12px;font-size:var(--t-xs);color:var(--muted);line-height:1.55}
+  .bk-alt{margin-top:12px;width:100%;background:none;border:0;color:var(--muted);font-family:var(--sans);font-size:var(--t-s);text-decoration:underline;text-underline-offset:2px;cursor:pointer;padding:6px}
+  .bk-alt:hover{color:var(--ink)}
+  .bk-x{position:absolute;top:12px;right:12px;z-index:2;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:var(--ink);font-size:22px;line-height:1;cursor:pointer;box-shadow:var(--shadow-sm)}
+  .bk-x:hover{background:#fff}
+  body.bk-open{overflow:hidden}
+  @media(max-width:760px){
+    .bk-card{grid-template-columns:1fr;max-height:94vh}
+    .bk-media{min-height:0;aspect-ratio:16/9}
+  }
+  @media(prefers-reduced-motion:reduce){.bk-card{animation:none}}
+
   /* ---------- chatbot (Kim) ---------- */
   .chat-fab{position:fixed;right:22px;bottom:22px;z-index:120;width:60px;height:60px;border-radius:50%;background:var(--accent);color:#fff;border:0;cursor:pointer;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(166,30,44,.6);transition:transform .25s cubic-bezier(.19,1,.22,1),background .2s}
   .chat-fab:hover{transform:scale(1.06)}
@@ -745,12 +775,21 @@
         <input type="date" id="abreise" name="abreise" required>
       </div>
       <div class="fld">
-        <label for="gaeste">Gäste</label>
+        <label for="gaeste">Erwachsene</label>
         <select id="gaeste" name="gaeste">
-          <option value="1">1 Gast</option>
-          <option value="2" selected>2 Gäste</option>
-          <option value="3">3 Gäste</option>
-          <option value="4">4 Gäste</option>
+          <option value="1">1 Erwachsener</option>
+          <option value="2" selected>2 Erwachsene</option>
+          <option value="3">3 Erwachsene</option>
+          <option value="4">4 Erwachsene</option>
+        </select>
+      </div>
+      <div class="fld">
+        <label for="kinder">Kinder</label>
+        <select id="kinder" name="kinder">
+          <option value="0" selected>keine</option>
+          <option value="1">1 Kind</option>
+          <option value="2">2 Kinder</option>
+          <option value="3">3 Kinder</option>
         </select>
       </div>
       <button class="btn btn-primary" type="submit">Zimmer anzeigen</button>
@@ -1174,6 +1213,30 @@
   </div>
 </footer>
 
+<!-- ============ BUCHUNGS-ZUSAMMENFASSUNG ============ -->
+<div class="bk" id="bkOverlay" aria-hidden="true">
+  <div class="bk-back" data-bkclose></div>
+  <div class="bk-card" role="dialog" aria-modal="true" aria-labelledby="bkTitle">
+    <button class="bk-x" type="button" data-bkclose aria-label="Schließen">&times;</button>
+    <div class="bk-media"><img id="bkImg" src="" alt=""></div>
+    <div class="bk-body">
+      <span class="eyebrow">Ihre Auswahl</span>
+      <h3 id="bkTitle">Zimmer</h3>
+      <dl class="bk-list">
+        <dt>Anreise</dt><dd id="bkIn"></dd>
+        <dt>Abreise</dt><dd id="bkOut"></dd>
+        <dt>Nächte</dt><dd id="bkN"></dd>
+        <dt>Gäste</dt><dd id="bkG"></dd>
+      </dl>
+      <div class="bk-total"><span>Gesamt ab</span><b id="bkTotal"></b></div>
+      <div class="bk-note" id="bkTax"></div>
+      <a class="btn btn-primary bk-go" id="bkGo" href="https://www.hotelcult.de/reservierung/">Weiter zur Reservierung <span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <p class="bk-fine">Im nächsten Schritt öffnet sich das Reservierungssystem des Hotels. Sollten dort Zeitraum oder Personenzahl erneut abgefragt werden, finden Sie Ihre Angaben oben.</p>
+      <button class="bk-alt" type="button" data-bkclose>Auswahl ändern</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ CHATBOT ============ -->
 <div class="chat-teaser" id="chatTeaser" role="status">
   <button class="tz" id="chTeaseX" type="button" aria-label="Hinweis schließen">&times;</button>
@@ -1219,17 +1282,23 @@ var ROOMS=[
 ];
 function pad(n){return (n<10?'0':'')+n;}
 function iso(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
+/* Zentrale Stelle fuer die Uebergabe an das Buchungssystem (vioma Booking, Hotel-ID 8145).
+   Sobald vioma die offiziellen Deeplink-Parameter liefert, nur diese Zuordnung anpassen. */
+var BOOKING_MAP={ arrival:'anreise', departure:'abreise', adults:'erwachsene', children:'kinder', category:'kategorie' };
 function getSearch(){
-  var a=document.getElementById('anreise'), b=document.getElementById('abreise'), g=document.getElementById('gaeste');
-  return {anreise:a?a.value:'', abreise:b?b.value:'', gaeste:g?g.value:''};
+  var a=document.getElementById('anreise'), b=document.getElementById('abreise'),
+      g=document.getElementById('gaeste'), k=document.getElementById('kinder');
+  return {anreise:a?a.value:'', abreise:b?b.value:'', gaeste:g?g.value:'', kinder:k?k.value:'0'};
 }
+function guestTotal(){ var s=getSearch(); return (parseInt(s.gaeste,10)||0)+(parseInt(s.kinder,10)||0); }
 function nights(a,b){ if(!a||!b)return 0; var n=Math.round((new Date(b)-new Date(a))/86400000); return n>0?n:0; }
 function bookingUrl(slug){
   var s=getSearch(), p=[];
-  if(s.anreise)p.push('anreise='+s.anreise);
-  if(s.abreise)p.push('abreise='+s.abreise);
-  if(s.gaeste)p.push('erwachsene='+s.gaeste);
-  if(slug)p.push('kategorie='+encodeURIComponent(slug));
+  if(s.anreise)p.push(BOOKING_MAP.arrival+'='+s.anreise);
+  if(s.abreise)p.push(BOOKING_MAP.departure+'='+s.abreise);
+  if(s.gaeste)p.push(BOOKING_MAP.adults+'='+s.gaeste);
+  if(s.kinder&&s.kinder!=='0')p.push(BOOKING_MAP.children+'='+s.kinder);
+  if(slug)p.push(BOOKING_MAP.category+'='+encodeURIComponent(slug));
   return BOOKING_BASE+(p.length?('?'+p.join('&')):'');
 }
 function goBooking(slug){ window.location.href=bookingUrl(slug); }
@@ -1427,6 +1496,12 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
   var cards=[].slice.call(grid.querySelectorAll('.room'));
   cards.sort(function(x,y){ return (+x.dataset.sug)-(+y.dataset.sug); }).forEach(function(c){ grid.appendChild(c); });
   function fmtDE(d){ if(!d)return''; var x=new Date(d); return pad(x.getDate())+'.'+pad(x.getMonth()+1)+'.'+x.getFullYear(); }
+  function guestLabel(){
+    var s=getSearch(), a=parseInt(s.gaeste,10)||0, k=parseInt(s.kinder,10)||0;
+    var out=a+' '+(a===1?'Erwachsener':'Erwachsene');
+    if(k>0){ out+=', '+k+' '+(k===1?'Kind':'Kinder'); }
+    return out;
+  }
   function updateRooms(){
     var s=getSearch(); var n=nights(s.anreise,s.abreise);
     cards.forEach(function(c){
@@ -1437,7 +1512,38 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
     });
     updateRatebar();
   }
-  cards.forEach(function(c){ var btn=c.querySelector('.js-room'); if(btn){ btn.addEventListener('click',function(e){ e.preventDefault(); goBooking(c.dataset.slug); }); } });
+  /* booking summary before the handover */
+  var bk=document.getElementById('bkOverlay'), bkLast=null;
+  function openBooking(card){
+    if(!bk){ goBooking(card.dataset.slug); return; }
+    var s=getSearch(), n=nights(s.anreise,s.abreise), price=+card.dataset.price;
+    var img=card.querySelector('.room-img img'), title=card.querySelector('h3');
+    var bi=document.getElementById('bkImg');
+    if(img&&bi){ bi.setAttribute('src',img.getAttribute('src')); bi.setAttribute('alt',img.getAttribute('alt')||''); }
+    document.getElementById('bkTitle').textContent=title?title.textContent:'Zimmer';
+    document.getElementById('bkIn').textContent=s.anreise?fmtDE(s.anreise):'bitte wählen';
+    document.getElementById('bkOut').textContent=s.abreise?fmtDE(s.abreise):'bitte wählen';
+    document.getElementById('bkN').textContent=n>0?(n+' '+(n===1?'Nacht':'Nächte')):'noch offen';
+    document.getElementById('bkG').textContent=guestLabel();
+    document.getElementById('bkTotal').textContent=n>0?((n*price)+' €'):('ab '+price+' € / Nacht');
+    var g=guestTotal()||1;
+    document.getElementById('bkTax').textContent=n>0?('zzgl. Beherbergungssteuer '+(2*g*n)+' €, Frühstück inklusive'):'inklusive Frühstück';
+    document.getElementById('bkGo').setAttribute('href',bookingUrl(card.dataset.slug));
+    bkLast=document.activeElement;
+    bk.classList.add('open'); bk.setAttribute('aria-hidden','false'); document.body.classList.add('bk-open');
+    setTimeout(function(){ try{ document.getElementById('bkGo').focus(); }catch(e){} },40);
+  }
+  function closeBooking(){
+    if(!bk)return;
+    bk.classList.remove('open'); bk.setAttribute('aria-hidden','true'); document.body.classList.remove('bk-open');
+    if(bkLast){ try{ bkLast.focus(); }catch(e){} }
+  }
+  cards.forEach(function(c){ var btn=c.querySelector('.js-room'); if(btn){ btn.addEventListener('click',function(e){ e.preventDefault(); openBooking(c); }); } });
+  if(bk){
+    [].forEach.call(bk.querySelectorAll('[data-bkclose]'),function(el){ el.addEventListener('click',closeBooking); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&bk.classList.contains('open')) closeBooking(); });
+    document.getElementById('bkGo').addEventListener('click',function(){ setTimeout(closeBooking,400); });
+  }
 
   /* sticky rate bar */
   var rbS=document.getElementById('rbSummary'), rbSub=document.getElementById('rbSub');
@@ -1446,7 +1552,7 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
     var s=getSearch(), n=nights(s.anreise,s.abreise);
     if(n>0){
       rbS.textContent=fmtDE(s.anreise)+' bis '+fmtDE(s.abreise);
-      rbSub.textContent=n+' '+(n===1?'Nacht':'Nächte')+', '+s.gaeste+' '+(s.gaeste==='1'?'Gast':'Gäste')+', Frühstück inklusive';
+      rbSub.textContent=n+' '+(n===1?'Nacht':'Nächte')+', '+guestLabel()+', Frühstück inklusive';
     }else{
       rbS.textContent='Ihr Zeitraum';
       rbSub.textContent='Frühstück inklusive, Bestpreis bei Direktbuchung';
@@ -1464,7 +1570,7 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
       sumTxt.textContent='';
       var strong=document.createElement('b'); strong.textContent=fmtDE(s.anreise)+' bis '+fmtDE(s.abreise);
       sumTxt.appendChild(strong);
-      sumTxt.appendChild(document.createTextNode(' · '+n+' '+(n===1?'Nacht':'Nächte')+' · '+s.gaeste+' '+(s.gaeste==='1'?'Gast':'Gäste')+'. Vorschläge für Ihren Zeitraum:'));
+      sumTxt.appendChild(document.createTextNode(' · '+n+' '+(n===1?'Nacht':'Nächte')+' · '+guestLabel()+'. Vorschläge für Ihren Zeitraum:'));
       sum.classList.add('show');
     }
   }
@@ -1477,7 +1583,7 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
     updateRooms(); showSummary();
     document.getElementById('zimmer').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
   }); }
-  ['anreise','abreise','gaeste'].forEach(function(id){ var el=document.getElementById(id); if(el){ el.addEventListener('change',function(){ updateRooms(); if(sum.classList.contains('show'))showSummary(); }); } });
+  ['anreise','abreise','gaeste','kinder'].forEach(function(id){ var el=document.getElementById(id); if(el){ el.addEventListener('change',function(){ updateRooms(); if(sum.classList.contains('show'))showSummary(); }); } });
   var edit=document.getElementById('availEdit'); if(edit){ edit.addEventListener('click',function(){ window.scrollTo({top:0,behavior:reduce?'auto':'smooth'}); }); }
   updateRooms();
 
@@ -1648,7 +1754,7 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
     }
   };
 
-  var S={lang:'de', arr:null, dep:null, guests:null, cat:null, pending:null, lastIntent:null, miss:0, greeted:false, opened:false};
+  var S={lang:'de', arr:null, dep:null, guests:null, kids:0, cat:null, pending:null, lastIntent:null, miss:0, greeted:false, opened:false};
   var LOG=[];
   function t(k){ return (T[S.lang]&&T[S.lang][k])||T.de[k]||''; }
   function tf(k,map){ var s=t(k); for(var x in map){ s=s.split('{'+x+'}').join(map[x]); } return s; }
@@ -1764,7 +1870,15 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
     else if(uniq.length===1){ res.arr=uniq[0]; if(res.nightsCount>0){ res.dep=addDays(uniq[0],res.nightsCount); } }
     return res;
   }
+  function parseChildren(q){
+    var m=q.match(/(\d{1,2})\s*(kinder|kind|children|child|kids)/);
+    if(m) return parseInt(m[1],10);
+    if(/\bein kind\b|\bone child\b/.test(q)) return 1;
+    if(/ohne kinder|no children/.test(q)) return 0;
+    return null;
+  }
   function parseGuests(q){
+    if(/(\d{1,2})\s*(kinder|kind|children|child|kids)/.test(q) && !/(\d{1,2})\s*(personen|person|gaeste|gast|erwachsene|leute|pax|people|guests|adults|persons)/.test(q)) return null;
     var m=q.match(/(\d{1,2})\s*(personen|person|gaeste|gast|erwachsene|leute|pax|people|guests|adults|persons)/);
     if(m) return parseInt(m[1],10);
     if(/\bzu zweit\b|\bfor two\b/.test(q)) return 2;
@@ -1782,6 +1896,7 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
     var parts=[];
     if(S.arr&&S.dep){ var n=nightsBetween(S.arr,S.dep); parts.push(fmtShort(S.arr)+(S.lang==='en'?' to ':' bis ')+fmtShort(S.dep)); parts.push(n+' '+(n===1?t('night'):t('nights'))); }
     if(S.guests){ parts.push(S.guests+' '+(S.guests===1?t('guest'):t('guests'))); }
+    if(S.kids>0){ parts.push(S.kids+' '+(S.lang==='en'?(S.kids===1?'child':'children'):(S.kids===1?'Kind':'Kinder'))); }
     return parts.join(', ');
   }
   function fairIn(a,b){
@@ -1850,7 +1965,7 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
     return {list:list, badge:badge};
   }
   function renderRooms(){
-    var r=rankRooms(), n=nightsBetween(S.arr,S.dep), g=S.guests||2;
+    var r=rankRooms(), n=nightsBetween(S.arr,S.dep), g=(S.guests||2)+(S.kids||0);
     var box=document.createElement('div'); box.className='ch-rooms';
     r.list.forEach(function(room,i){
       var meta=RX[room.slug]||{};
@@ -1933,7 +2048,11 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
     if(!slotBox)return;
     var items=[];
     if(S.arr&&S.dep) items.push({k:'dates',label:fmtShort(S.arr)+(S.lang==='en'?' to ':' bis ')+fmtShort(S.dep)});
-    if(S.guests) items.push({k:'guests',label:S.guests+' '+(S.guests===1?t('guest'):t('guests'))});
+    if(S.guests){
+      var gl=S.guests+' '+(S.guests===1?t('guest'):t('guests'));
+      if(S.kids>0){ gl+=' + '+S.kids+' '+(S.lang==='en'?(S.kids===1?'child':'children'):(S.kids===1?'Kind':'Kinder')); }
+      items.push({k:'guests',label:gl});
+    }
     if(!items.length){ slotBox.hidden=true; slotBox.innerHTML=''; return; }
     slotBox.hidden=false; slotBox.innerHTML='';
     items.forEach(function(it){
@@ -1948,7 +2067,9 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
     if(S.arr&&a){ a.value=iso(S.arr); ch=true; }
     if(S.dep&&b){ b.value=iso(S.dep); ch=true; }
     if(S.guests&&g&&S.guests<=4){ g.value=String(S.guests); ch=true; }
-    if(ch){ ['anreise','abreise','gaeste'].forEach(function(id){ var el=document.getElementById(id); if(el){ el.dispatchEvent(new Event('change')); } }); }
+    var kEl=document.getElementById('kinder');
+    if(kEl&&S.kids>=0&&S.kids<=3){ kEl.value=String(S.kids); }
+    if(ch){ ['anreise','abreise','gaeste','kinder'].forEach(function(id){ var el=document.getElementById(id); if(el){ el.dispatchEvent(new Event('change')); } }); }
     return ch;
   }
 
@@ -2050,7 +2171,8 @@ function goBooking(slug){ window.location.href=bookingUrl(slug); }
 
   /* ---------- routing ---------- */
   function handleEntities(raw,q){
-    var d=parseDates(q), g=parseGuests(q), changed=false, msg=[];
+    var d=parseDates(q), g=parseGuests(q), kd=parseChildren(q), changed=false, msg=[];
+    if(kd!==null){ S.kids=kd; changed=true; }
     if(d.bad && !d.arr){ say(t('badDate')); S.pending='arr'; return true; }
     if(d.past && !d.arr){ say(t('pastDate')); S.pending='arr'; return true; }
     if(d.arr){ S.arr=d.arr; changed=true; }
