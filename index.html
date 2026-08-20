@@ -1282,24 +1282,27 @@ var ROOMS=[
 ];
 function pad(n){return (n<10?'0':'')+n;}
 function iso(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
-/* Zentrale Stelle fuer die Uebergabe an das Buchungssystem (vioma Booking, Hotel-ID 8145).
-   Sobald vioma die offiziellen Deeplink-Parameter liefert, nur diese Zuordnung anpassen. */
-var BOOKING_MAP={ arrival:'anreise', departure:'abreise', adults:'erwachsene', children:'kinder', category:'kategorie' };
+/* Uebergabe an die Buchungsstrecke: vioma booking (Hotel-ID 8145).
+   Parameternamen und Hash-Format sind im Widget-Code von vioma verifiziert.
+   Die Buchungsstrecke liest Deeplinks aus dem HASH-Fragment, nicht aus dem Query-String. */
+var BOOKING_MAP={ arrival:"calendar_date_from", departure:"calendar_date_to", adults:"persons_adults", children:"persons_children" };
+var BOOKING_HASH="#/vsc.php";
 function getSearch(){
-  var a=document.getElementById('anreise'), b=document.getElementById('abreise'),
-      g=document.getElementById('gaeste'), k=document.getElementById('kinder');
-  return {anreise:a?a.value:'', abreise:b?b.value:'', gaeste:g?g.value:'', kinder:k?k.value:'0'};
+  var a=document.getElementById("anreise"), b=document.getElementById("abreise"),
+      g=document.getElementById("gaeste"), k=document.getElementById("kinder");
+  return {anreise:a?a.value:"", abreise:b?b.value:"", gaeste:g?g.value:"", kinder:k?k.value:"0"};
 }
 function guestTotal(){ var s=getSearch(); return (parseInt(s.gaeste,10)||0)+(parseInt(s.kinder,10)||0); }
 function nights(a,b){ if(!a||!b)return 0; var n=Math.round((new Date(b)-new Date(a))/86400000); return n>0?n:0; }
+/* slug bleibt in der Signatur: die Zimmerwahl zeigen wir selbst an. Eine Vorauswahl der
+   Kategorie braucht die numerischen vioma-Paket-IDs (Parameter "package"), die uns fehlen. */
 function bookingUrl(slug){
   var s=getSearch(), p=[];
-  if(s.anreise)p.push(BOOKING_MAP.arrival+'='+s.anreise);
-  if(s.abreise)p.push(BOOKING_MAP.departure+'='+s.abreise);
-  if(s.gaeste)p.push(BOOKING_MAP.adults+'='+s.gaeste);
-  if(s.kinder&&s.kinder!=='0')p.push(BOOKING_MAP.children+'='+s.kinder);
-  if(slug)p.push(BOOKING_MAP.category+'='+encodeURIComponent(slug));
-  return BOOKING_BASE+(p.length?('?'+p.join('&')):'');
+  if(s.anreise)p.push(BOOKING_MAP.arrival+"="+s.anreise);
+  if(s.abreise)p.push(BOOKING_MAP.departure+"="+s.abreise);
+  if(s.gaeste)p.push(BOOKING_MAP.adults+"="+s.gaeste);
+  if(s.kinder&&s.kinder!=="0")p.push(BOOKING_MAP.children+"="+s.kinder);
+  return BOOKING_BASE+(p.length?(BOOKING_HASH+"?"+p.join("&")):"");
 }
 function goBooking(slug){ window.location.href=bookingUrl(slug); }
 
